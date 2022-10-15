@@ -1,3 +1,47 @@
-body {
-    background-color: black;
+#home-page-body {
+    background-image: url('../images/spotify-background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+#div-form {
+   display: flex;
+   background: rgba(245, 245, 245, 0.384);
+    width: 100vh;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    
+   
+    
+}
+
+#div-form form {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    gap: 0.5vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#input-button {
+    background-color: red;
+    border: 0;
+    height: 4vh;
+    color: aliceblue;
+    font-weight: 600;
+    width: 20vh;
+    text-align: center;
+}
+
+#input-homepage{
+    width: 50vh;
+}
+
