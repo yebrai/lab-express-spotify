@@ -34,13 +34,31 @@ const spotifyApi = new SpotifyWebApi({
     spotifyApi
   .searchArtists(artistName)
   .then(data => {
-   console.log(data.body.artists.items)
+   //console.log(data.body.artists.items[0])
     res.render("artist-search-results.hbs", {
       artistSearched: data.body.artists.items
       
     })
   })
   .catch(err => console.log('The error while searching artists occurred: ', err));
+
+  app.get('/albums/:artistId', (req, res, next) => {
+    
+    const {artistId} = req.params
+
+    spotifyApi.getArtistAlbums(artistId)
+    .then((response) => {
+      console.log(response.body.items[0])
+      res.render('albums.hbs',{
+        artistAlbum: response.body.items
+        
+      })
+
+    })
+    .catch((err)=> {
+      console.log(err)
+    })
+  });
     
   })
 
