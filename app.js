@@ -32,7 +32,7 @@ app.get("/", (req, res, next) => {
 });
 
 app.get("/artist-search", (req, res, next) => {
-  const { artistName } = req.query;
+  const { artistName } = req.query; // req.query viene del campo de busqueda, req.params del enlace.
   console.log(artistName);
   spotifyApi
     .searchArtists(artistName)
@@ -62,6 +62,20 @@ app.get("/artist-search", (req, res, next) => {
       });
   });
 });
+
+app.get("/tracks/:albumId", (req, res, next) => {
+
+    const {albumId} = req.params
+
+  spotifyApi
+  .getAlbumTracks(albumId)
+  .then((response) => {
+    console.log(response.body.items)
+    res.render("tracks.hbs", {
+      albumTracks: response.body.items
+    })
+  })
+})
 
 app.listen(3000, () =>
   console.log("My Spotify project running on port 3000 🎧 🥁 🎸 🔊")
